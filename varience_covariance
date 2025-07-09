@@ -1,0 +1,14 @@
+# variance_covariance.R
+
+# Extract D matrix (random effects variance-covariance)
+D_matrix <- VarCorr(model.lmer)$S
+D_matrix_rounded <- round(D_matrix, 2)
+print("D Matrix:")
+print(D_matrix_rounded)
+
+# Extract R matrix (residual variance)
+sigma_squared <- sigma(model.lmer)^2
+R_matrix <- diag(rep(sigma_squared, length(cognitive_data$T)))
+R_matrix_rounded <- round(R_matrix, 2)
+print("R Matrix:")
+print(R_matrix_rounded)
