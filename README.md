@@ -1,2 +1,65 @@
 # Cognitive-Reading-Task-Analysis-Using-Linear-Mixed-Models
 Analyzed how gender, cue condition, and word color affect reading speed using linear mixed-effects models in R. Includes hypothesis testing, subject-level predictions, and variance analysis.
+
+
+
+# 🧠 Cognitive Reading Task Analysis Using Linear Mixed Models
+
+This project investigates how gender, cue condition, and word color influence reading speed using linear mixed-effects modeling (LMM). The analysis is based on data from 36 subjects who completed four randomized reading tasks.
+
+## 🎯 Objectives
+
+- Model repeated measures data using LMM
+- Estimate fixed and random effects
+- Test hypotheses about group differences in reading time
+- Predict subject-specific performance
+- Evaluate model structure using variance-covariance matrices
+
+## 📊 Dataset
+
+- **File**: `Cognitive.csv`
+- **Subjects**: 36
+- **Variables**:
+  - `T`: Reading time
+  - `G`: Gender
+  - `C`: Cue condition (Congruent/Incongruent)
+  - `W`: Word color (Red/Green)
+  - `S`: Subject ID
+
+## 🧪 Methods
+
+- Linear mixed-effects model using `lmer()` from the `lme4` package
+- Fixed effects: Gender, Cue, Word Color, and their interactions
+- Random effects: Subject-specific intercepts and slopes
+- Hypothesis testing using `glht()` from `multcomp`
+- Residual and random effect analysis
+- Variance-covariance matrix extraction
+
+## 📁 Key Files
+
+| File | Description |
+|------|-------------|
+| `model_fitting.R` | Fits the LMM and extracts fixed effects |
+| `hypothesis_testing.R` | Tests differences between specific group means |
+| `subject_prediction.R` | Predicts reading time for a specific subject |
+| `variance_covariance.R` | Extracts D and R matrices |
+| `Cognitive_Reading_LMM_Report.pdf` | Full academic-style report with interpretation |
+
+## 📈 Sample Output
+
+- Fixed effects table with estimates and p-values
+- Hypothesis test comparing female vs. male reading times
+- Subject-level prediction and residuals
+- Variance-covariance matrices (D and R)
+
+## 🧠 Skills Demonstrated
+
+- Linear mixed modeling
+- Hypothesis testing
+- R programming and tidyverse
+- Reproducible research with RMarkdown
+- Interpretation of statistical outputs
+
+## 📜 License
+
+This project is for academic and portfolio use only.
