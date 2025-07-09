@@ -1,0 +1,40 @@
+# subject_prediction.R
+
+library(dplyr)
+
+# Filter data for Subject 4 (Incongruent, Green)
+subject_4_data <- cognitive_data %>%
+  filter(S == 4 & C == 1 & W == 1)
+
+# Observed reading time
+T_obs <- subject_4_data$T
+
+# Extract fixed effects
+fixed_effects <- fixef(model.lmer)
+beta_0 <- fixed_effects["(Intercept)"]
+beta_G <- fixed_effects["G"]
+beta_C <- fixed_effects["C"]
+beta_W <- fixed_effects["W"]
+beta_GC <- fixed_effects["G:C"]
+beta_GW <- fixed_effects["G:W"]
+beta_CW <- fixed_effects["C:W"]
+beta_GCW <- fixed_effects["G:C:W"]
+
+# Extract random effects for Subject 4
+random_effects <- ranef(model.lmer)$S[4, ]
+mu_0_4 <- random_effects[1]
+mu_C_4 <- random_effects[2]
+mu_W_4 <- random_effects[3]
+
+# Predicted reading time
+T_pred <- beta_0 + beta_G * 1 + beta_C * 1 + beta_W * 1 +
+  beta_GC * 1 + beta_GW * 1 + beta_CW * 1 + beta_GCW * 1 +
+  mu_0_4 + mu_C_4 + mu_W_4
+
+# Compute residual
+residual_4 <- T_obs - T_pred
+
+# Output
+print(paste("Observed:", T_obs))
+print(paste("Predicted:", T_pred))
+print(paste("Residual:", residual_4))
